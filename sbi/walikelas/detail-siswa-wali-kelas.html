@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Sistem Informasi Monitoring Siswa | SBI</title>
+    <!-- plugins:css -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.min.js" integrity="sha512-3dZ9wIrMMij8rOH7X3kLfXAzwtcHpuYpEgQg1OA4QAob1e81H8ntUQmQm3pBudqIoySO5j0tHN4ENzA6+n2r4w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="../assets/vendors/simple-line-icons/css/simple-line-icons.css">
+    <link rel="stylesheet" href="../assets/vendors/flag-icon-css/css/flag-icon.min.css">
+
+    <link rel="stylesheet" href="../assets/vendors/daterangepicker/daterangepicker.css">
+    <link rel="stylesheet" href="../assets/vendors/chartist/chartist.min.css">
+    <!-- Plugin css for this page -->
+    <link rel="stylesheet" href="../assets/vendors/select2/select2.min.css">
+    <link rel="stylesheet" href="../assets/vendors/select2-bootstrap-theme/select2-bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/css/style.css" />
+    <script src="http://js.nicedit.com/nicEdit-latest.js" type="text/javascript"></script>
+        <!-- LINK AOS LIBRARY -->
+        <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+  </head>
+  <body>
+    <div class="container-scroller">
+      <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+             <div class="navbar-brand-wrapper d-flex align-items-center">        
+               <a class="navbar-brand brand-logo ml-auto text-right" href="dashboard.html">
+                 <img src="./../assets/images/sbi-header-homepage.png"  alt="logo" />
+               </a>
+               <a class="navbar-brand brand-logo-mini" href="dashboard.html"><img src="./../assets/images/sbi-header-homepage.png" width="300px" alt="logo" /></a>
+             </div>
+             <!--  -->
+             <div class="navbar-menu-wrapper d-flex align-items-center flex-grow-1">
+              
+              
+               <div id="google_translate_element" class="ml-auto"></div>
+     
+               <ul class="navbar-nav navbar-nav-right ml-auto">
+                 
+                 <li class="nav-item dropdown d-none d-xl-inline-flex user-dropdown">
+                   <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="true">
+                     <img class="img-xs rounded-circle ml-2" src="./../assets/images/faces/face8.jpg" alt="Profile image"> <span class="font-weight-normal">Hello, Handayani(Wali Kelas) </span></a>
+                     <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
+                       <div class="dropdown-header d-flex">
+                         <img class="img-md rounded-circle" src="./../assets/images/faces/face8.jpg" width="60px" alt="Profile image">
+                         <div><p class="mb-1 mt-3"></p>
+                           <p class="font-weight-light text-muted mb-0">handayani@gmail.com</p> </div>
+                     </div>
+                     <a class="dropdown-item" href="#"><i class="dropdown-item-icon icon-user text-primary"></i> My Profile</a>
+                     <a class="dropdown-item" href="#"><i class="dropdown-item-icon icon-energy text-primary"></i> Change Password</a>
+                     <a class="dropdown-item" href="Login.html"><i class="dropdown-item-icon icon-power text-primary"></i>Sign Out</a>
+                   </div>
+                 </li>
+                 <li class="nav-item dropdown d-none d-xl-inline-flex user-dropdown">
+                     <a class="notif-icon" id="UserDropdown2" href="#" data-toggle="dropdown" aria-expanded="true"><i class="icon-paper-plane menu-icon"><span class="badge">1</span></i></a>
+                     <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown2">
+                       <div class="dropdown-header d-flex">
+                         <div>
+                           <p>Notifikasi : Catatan Baru</p>
+                           <hr>
+                           <img class="img-md rounded-circle" src="./../assets/images/ebcd036a0db50db993ae98ce380f64191642082944.png" width="60px" alt="Profile image">
+                           <p>Nama Wali Murid: Syarif</p>
+                           <hr>
+                           <a href="kelola-catatan.html" class="mb-0 btn-sm btn-primary">Periksa</a>  <a href="#" class="btn-sm btn-danger mb-0">Hapus</a> </div>  
+                         </div>
+                   
+                   </div>
+                 </li>
+                 
+                
+               </ul>
+               
+               <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
+                 <span class="icon-menu"></span>
+               </button>
+             </div>
+     
+           </nav>
+           
+           <!-- partial -->
+           <div class="container-fluid page-body-wrapper">
+             
+             <!-- SIDEBAR MENUU -->
+             <nav class="sidebar sidebar-offcanvas" id="sidebar" >
+               <ul class="nav">
+                 <li class="nav-item"> 
+                   <a class="nav-link" href="dashboard.html">
+                   <i class="icon-home menu-icon" ></i>       
+                   <span class="menu-title">Dashboard</span>  
+                 </a>
+                 </li>
+                 
+                 <li class="nav-item" >
+                   <a class="nav-link dropdown-toggle" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+                     <i class="icon-layers menu-icon"></i>
+                     <span class="menu-title">Kelas</span>
+                   </a>
+                   <div class="collapse" id="ui-basic">
+                     <ul class="nav flex-column sub-menu">
+                       <li class="nav-item"> <a class="nav-link" href="tambah-kelas.html">Tambah Kelas</a></li>
+                       <li class="nav-item"> <a class="nav-link" href="kelola-kelas.html">Kelola Kelas</a></li>
+                     </ul>
+                   </div>
+                 </li>
+                 <li class="nav-item  aktif">
+                   <a class="nav-link dropdown-toggle" data-toggle="collapse" href="#ui-basic1" aria-expanded="false" aria-controls="ui-basic1">
+                     <i class="icon-people menu-icon"></i>
+                     <span class="menu-title">Siswa / i</span>
+                   </a>
+                   <div class="collapse" id="ui-basic1">
+                     <ul class="nav flex-column sub-menu">
+                       <li class="nav-item"> <a class="nav-link" href="tambah-siswa.html">Tambah Siswa/i</a></li>
+                       <li class="nav-item"> <a class="nav-link" href="kelola-siswa.html">Kelola Siswa/i</a></li>
+                     </ul>
+                   </div>
+                 </li>
+                 <li class="nav-item">
+                   <a class="nav-link" href="kelola-catatan.html">
+                     <i class="icon-doc menu-icon"></i>
+                     <span class="menu-title">Catatan</span>
+                   </a>
+                 </li>
+                 <li class="nav-item">
+                   <a class="nav-link" href="cari-siswa.html">
+                     <i class="icon-magnifier menu-icon"></i>
+                     <span class="menu-title">Cari Siswa</span>
+                   </a>
+                 </li>
+                 <li class="nav-item">
+                   <a class="nav-link" href="konsultasi-wali-kelas.html">
+                     <i class="icon-bubbles menu-icon"></i>
+                     <span class="menu-title">Konsultasi</span>
+                   </a>
+                 </li>  
+                 </li>
+               </ul>
+             </nav>
+             <!-- SIDEBAR MENU -->
+        <div class="main-panel">
+          <div class="content-wrapper">
+            <div class="row">
+              <div class="col-md-12 grid-margin">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col-md-12">
+                        <style>
+                            .user-avatar{
+                                width:10rem;
+                                height:10rem;
+                                /* object-fit: scale-down; */
+                                object-position:center center;
+                            }
+                        </style>
+                        <section class="py-5 ">
+                            <div class="container">
+                                <h2 class="fw-bolder text-center"><b>Detail Siswa</b></h2>
+                                <hr>
+                                <div class="row justify-content-center">
+                                    <div class="col-lg-8 col-md-10 col-sm-12 col-xs-12 border border-1-primary">
+                                        <div class="text-center">
+                                            <img src="../assets/images/kelly-sikkema-RZamNjYMjU0-unsplash.jpg" width="100%" alt="" class="image-thumbnail rounded-circle user-avatar border">
+                                        </div>
+                                        <dl class="row">
+                                            <dt class="col-3 px-2">Nama Lengkap</dt>
+                                            <dd class="col-9 px-2">Tony Stark</dd>
+                                            <dt class="col-3 px-2">ID Siswa</dt>
+                                            <dd  class="col-9 px-2">01</dd>
+                                            <dt class="col-3 px-2">Tahun Ajaran</dt>
+                                            <dd  class="col-9 px-2">2023</dd>
+                                            <dt class="col-3 px-2">Kelas</dt>
+                                            <dd  class="col-9 px-2">4</dd>
+                                            <dt class="col-3 px-2">Jenis Kelamin</dt>
+                                            <dd  class="col-9 px-2">Pria</dd>
+                                           
+                                            <hr class="dark">
+                                           
+                                        </dl>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- TABEL -->
+                        <style>
+                            .table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table th, .table td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.table th {
+  background-color: #cee3fa;
+}
+
+.table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.table tbody tr:hover {
+  background-color: #e6e6e6;
+}
+                            </style>
+                       
+                              <div class="table-responsive border rounded p-5" data-aos="fade-up">
+                                <table class="table">
+                                    <h3 class="text-center p-2">Riwayat Nilai Akademik Ke Agamaan</h3>
+                                    
+    
+                                  <thead>
+                                    <tr>
+                                      <th class="font-weight-bold">No</th>
+                                      <th class="font-weight-bold">Nama Pelajaran</th>
+                                      <th class="font-weight-bold">Nilai</th>
+                                      <th class="font-weight-bold">Diperbarui</th>
+                                    
+                                      
+                                      
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                   
+                                    <tr>
+                                      <td>1</td>
+                                      <td>Aqidah</td>
+                                      <td>89</td>
+                                      <td>01/06/2023</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>Tazkiyatun Nafs</td>
+                                        <td>92</td>
+                                        <td>01/06/2023</td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td>Fiqih</td>
+                                        <td>90</td>
+                                        <td>01/06/2023</td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td>Ushul Fiqih</td>
+                                        <td>85</td>
+                                        <td>01/06/2023</td>
+                                    </tr>
+                                    <tr>
+                                        <td>5</td>
+                                        <td>Tahsin Tilawah</td>
+                                        <td>90</td>
+                                        <td>01/06/2023</td>
+                                    </tr>
+                                    <tr>
+                                        <td>6</td>
+                                        <td>Tahfizh Al-Qur'an</td>
+                                        <td>90</td>
+                                        <td>01/06/2023</td>
+                                    </tr>
+                                    <tr>
+                                        <td>7</td>
+                                        <td>Tafsir</td>
+                                        <td>90</td>
+                                        <td>01/06/2023</td>
+                                    </tr>
+                                    <tr>
+                                        <td>8</td>
+                                        <td>Tahfizh Hadist</td>
+                                        <td>90</td>
+                                        <td>01/06/2023</td>
+                                    </tr>
+                                    <tr>
+                                        <td>9</td>
+                                        <td>Syarah Hadist</td>
+                                        <td>90</td>
+                                        <td>01/06/2023</td>
+                                    </tr>
+                                    <tr>
+                                        <td>10</td>
+                                        <td>Mustholah Hadist</td>
+                                        <td>90</td>
+                                        <td>01/06/2023</td>
+                                    </tr>
+                                    <tr>
+                                        <td>11</td>
+                                        <td>Sejarah Nabi</td>
+                                        <td>90</td>
+                                        <td>01/06/2023</td>
+                                    </tr>
+                                    <tr>
+                                        <td>12</td>
+                                        <td>Percakapan Bahasa Arab</td>
+                                        <td>90</td>
+                                        <td>01/06/2023</td>
+                                    </tr>
+                                    <tr>
+                                        <td>13</td>
+                                        <td>Nahwu</td>
+                                        <td>90</td>
+                                        <td>01/06/2023</td>
+                                    </tr>
+                                    <tr>
+                                        <td>14</td>
+                                        <td>Shorof</td>
+                                        <td>90</td>
+                                        <td>01/06/2023</td>
+                                    </tr>
+                                    <p>Total Pelajaran : 14</p>
+                                  </tbody>
+                                </table>
+                              </div>
+                                 <!-- GRAFIK NILAI -->
+                                 <div class="chart-container" data-aos="fade-up">
+                                    <canvas id="academicChart"></canvas>
+                                  </div>
+                            
+                              <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+                             
+
+                              <script>
+                                // Data nilai akademik
+                                var academicData = {
+                                  labels: [
+                                    'Aqidah',
+                                    'Tazkiyatun Nafs',
+                                    'Fiqih',
+                                    'Ushul Fiqih',
+                                    'Tahsin Tilawah',
+                                    'Tahfizh Al-Qur\'an',
+                                    'Tafsir',
+                                    'Tahfizh Hadist',
+                                    'Syarah Hadist',
+                                    'Mustholah Hadist',
+                                    'Sejarah Nabi',
+                                    'Percakapan Bahasa Arab',
+                                    'Nahwu',
+                                    'Shorof'
+                                  ],
+                                  datasets: [{
+                                    label: 'Nilai Akademik',
+                                    data: [89, 92, 90, 85, 90, 90, 90, 90, 90, 90, 90, 90, 90, 90],
+                                    backgroundColor: 'rgba(75, 192, 192, 0.5)',
+                                    borderColor: 'rgba(75, 192, 192, 1)',
+                                    borderWidth: 1
+                                  }]
+                                };
+                            
+                                // Membuat grafik dengan Chart.js
+                                var ctx = document.getElementById('academicChart').getContext('2d');
+                                var academicChart = new Chart(ctx, {
+                                  type: 'bar',
+                                  data: academicData,
+                                  options: {
+                                    responsive: true,
+                                    maintainAspectRatio: false,
+                                    scales: {
+                                      y: {
+                                        beginAtZero: true,
+                                        max: 100,
+                                        stepSize: 10
+                                      }
+                                    },
+                                    plugins: {
+                                      legend: {
+                                        display: false
+                                      }
+                                    }
+                                  }
+                                });
+                              </script>
+                               <!-- GRAFIK NILAI RATA-RATA -->
+  <div class="chart-container" data-aos="fade-up">
+    <canvas id="averageChartCanvas"></canvas>
+  </div>
+
+  <script>
+    // Menghitung rata-rata nilai
+    var academicDataValues = academicData.datasets[0].data;
+    var sum = academicDataValues.reduce((a, b) => a + b, 0);
+    var average = sum / academicDataValues.length;
+
+    // Membuat grafik pie untuk nilai rata-rata dengan Chart.js
+    var ctx2 = document.getElementById('averageChartCanvas').getContext('2d');
+    var averageChart = new Chart(ctx2, {
+      type: 'pie',
+      data: {
+        labels: ['Rata-rata', 'Lainnya'],
+        datasets: [{
+          data: [average, 100 - average],
+          backgroundColor: ['rgba(75, 192, 192, 0.5)', 'rgba(0, 0, 0, 0)'],
+          borderColor: ['rgba(75, 192, 192, 1)', 'rgba(0, 0, 0, 0)'],
+          borderWidth: 1
+        }]
+      },
+      options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: {
+          display: true,
+          position: 'bottom'
+        }
+      }
+    }
+  });
+</script>
+
+                              <!-- RIWAYAT NILAI AKADEMIK UMUM -->
+                              <div class="table-responsive border rounded p-5" data-aos="fade-up">
+                                <table class="table">
+                                    <h3 class="text-center p-2">Riwayat Nilai Akademik Umum</h3>
+                                    
+    
+                                    <thead>
+                                      <tr>
+                                        <th class="font-weight-bold">No</th>
+                                        <th class="font-weight-bold">Nama Pelajaran</th>
+                                        <th class="font-weight-bold">Nilai</th>
+                                        <th class="font-weight-bold">Diperbarui</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                      <tr>
+                                        <td>1</td>
+                                        <td>Pendidikan Agama</td>
+                                        <td>89</td>
+                                        <td>01/06/2023</td>
+                                      </tr>
+                                      <tr>
+                                        <td>2</td>
+                                        <td>PKN</td>
+                                        <td>92</td>
+                                        <td>01/06/2023</td>
+                                      </tr>
+                                      <tr>
+                                        <td>3</td>
+                                        <td>Bahasa Indonesia</td>
+                                        <td>90</td>
+                                        <td>01/06/2023</td>
+                                      </tr>
+                                      <tr>
+                                        <td>4</td>
+                                        <td>Bahasa Inggris</td>
+                                        <td>85</td>
+                                        <td>01/06/2023</td>
+                                      </tr>
+                                      <tr>
+                                        <td>5</td>
+                                        <td>Matematika</td>
+                                        <td>90</td>
+                                        <td>01/06/2023</td>
+                                      </tr>
+                                      <tr>
+                                        <td>6</td>
+                                        <td>IPA</td>
+                                        <td>90</td>
+                                        <td>01/06/2023</td>
+                                      </tr>
+                                      <tr>
+                                        <td>7</td>
+                                        <td>IPS</td>
+                                        <td>90</td>
+                                        <td>01/06/2023</td>
+                                      </tr>
+                                      <tr>
+                                        <td>8</td>
+                                        <td>Seni Budaya</td>
+                                        <td>90</td>
+                                        <td>01/06/2023</td>
+                                      </tr>
+                                      <tr>
+                                        <td>9</td>
+                                        <td>Penjas Orkes</td>
+                                        <td>90</td>
+                                        <td>01/06/2023</td>
+                                      </tr>
+                                      <tr>
+                                        <td>10</td>
+                                        <td>Keterampilan</td>
+                                        <td>90</td>
+                                        <td>01/06/2023</td>
+                                      </tr>
+                                      <p>Total Pelajaran : 10</p>
+                                    </tbody>
+                                </table>
+                              </div>
+                                <!-- GRAFIK NILAI -->
+<div class="chart-container"data-aos="fade-up">
+  <canvas id="newAcademicChart"></canvas>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+  // Data nilai akademik
+  var academicData = {
+    labels: [
+      'Pendidikan Agama',
+      'PKN',
+      'Bahasa Indonesia',
+      'Bahasa Inggris',
+      'Matematika',
+      'IPA',
+      'IPS',
+      'Seni Budaya',
+      'Penjas Orkes',
+      'Keterampilan'
+    ],
+    datasets: [{
+      label: 'Nilai Akademik',
+      data: [89, 92, 90, 85, 90, 90, 90, 90, 90, 90],
+      backgroundColor: 'rgba(75, 192, 192, 0.5)',
+      borderColor: 'rgba(75, 192, 192, 1)',
+      borderWidth: 1
+    }]
+  };
+
+  // Membuat grafik dengan Chart.js
+  var ctx = document.getElementById('newAcademicChart').getContext('2d');
+  var academicChart = new Chart(ctx, {
+    type: 'bar',
+    data: academicData,
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      scales: {
+        y: {
+          beginAtZero: true,
+          max: 100,
+          stepSize: 10
+        }
+      },
+      plugins: {
+        legend: {
+          display: false
+        }
+      }
+    }
+  });
+</script>
+<!-- RATA RATA -->
+<!-- GRAFIK NILAI RATA-RATA -->
+<div class="chart-container"data-aos="fade-up">
+  <canvas id="averageChart"></canvas>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+  // Menghitung rata-rata nilai
+  var academicData = [89, 92, 90, 85, 90, 90, 90, 90, 90, 90];
+  var sum = academicData.reduce((a, b) => a + b, 0);
+  var average = sum / academicData.length;
+
+  // Membuat grafik pie dengan Chart.js
+  var ctx = document.getElementById('averageChart').getContext('2d');
+  var averageChart = new Chart(ctx, {
+    type: 'pie',
+    data: {
+      labels: ['Rata-rata', 'Lainnya'],
+      datasets: [{
+        data: [average, 100 - average],
+        backgroundColor: ['rgba(75, 192, 192, 0.5)', 'rgba(0, 0, 0, 0)'],
+        borderColor: ['rgba(75, 192, 192, 1)', 'rgba(0, 0, 0, 0)'],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: {
+          display: true,
+          position: 'bottom'
+        }
+      }
+    }
+  });
+</script>
+
+<!-- RATA RATA -->
+
+                              
+ <div class="table-responsive border rounded p-5" data-aos="fade-up">
+    <table class="table">
+        <h3 class="text-center p-2">Riwayat Nilai Non Akademik</h3>
+        
+
+      <thead>
+        <tr>
+          <th class="font-weight-bold">No</th>
+          <th class="font-weight-bold">Nama Kegiatan</th>
+          <th class="font-weight-bold">Nilai</th>
+          <th class="font-weight-bold">Diperbarui</th>
+        
+          
+          
+        </tr>
+      </thead>
+      <tbody>
+       
+        <tr>
+          <td>1</td>
+          <td>Memanah</td>
+          <td>89</td>
+          <td>01/06/2023</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>Renang</td>
+            <td>92</td>
+            <td>01/06/2023</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>Sepak Bola</td>
+            <td>90</td>
+            <td>01/06/2023</td>
+        </tr>
+       
+        <p>Total Kegiatan : 3</p>
+      </tbody>
+    </table>
+  </div>
+     <!-- GRAFIK NILAI -->
+     <div class="chart-container"data-aos="fade-up">
+        <canvas id="nonAcademicChart"></canvas>
+      </div>
+    
+      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+      <script>
+// Data nilai non-akademik (contoh data)
+var nonAcademicData = {
+labels: ['Memanah', 'Renang', 'Sepak Bola'], // Nama kegiatan
+datasets: [{
+label: 'Nilai Non-Akademik',
+data: [89, 92, 90], // Data nilai non-akademik
+fill: false,
+borderColor: 'rgba(54, 162, 235, 1)',
+borderWidth: 2
+}]
+};
+
+// Membuat grafik dengan Chart.js
+var ctx = document.getElementById('nonAcademicChart').getContext('2d');
+var nonAcademicChart = new Chart(ctx, {
+type: 'line',
+data: nonAcademicData,
+options: {
+responsive: true,
+maintainAspectRatio: false,
+scales: {
+y: {
+beginAtZero: true,
+max: 100,
+stepSize: 10
+}
+},
+plugins: {
+legend: {
+display: false
+}
+}
+}
+});
+
+      </script>
+                        <div class="table-responsive border rounded p-5" data-aos="fade-up">
+                            <table class="table">
+                                <h3 class="text-center p-2">Riwayat Absensi</h3>
+                                
+
+                              <thead>
+                                <tr>
+                                  <th class="font-weight-bold">No</th>
+                                  <th class="font-weight-bold">Nama Pelajaran</th>
+                                  <th class="font-weight-bold">Keterangan</th>
+                                  <th class="font-weight-bold">Diperbarui</th>
+                                
+                                  
+                                  
+                                </tr>
+                              </thead>
+                              <tbody>
+                               
+                                <tr>
+                                  <td>1</td>
+                                  <td>Bahasa Arab</td>
+                                  <td>Hadir(20) Sakit/Izin(0) Alpha(0)</td>
+                                  <td>20/06/2023</td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>Hadist</td>
+                                    <td>Hadir(20) Sakit/Izin(0) Alpha(0)</td>
+                                    <td>20/06/2023</td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>Al-Qur'an Tajwid</td>
+                                    <td>Hadir(20) Sakit/Izin(0) Alpha(0)</td>
+                                    <td>20/06/2023</td>
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td>Sejarah Islam</td>
+                                    <td>Hadir(20) Sakit/Izin(0) Alpha(0)</td>
+                                    <td>20/06/2023</td>
+                                </tr>
+                                <tr>
+                                    <td>5</td>
+                                    <td>Fiqih</td>
+                                    <td>Hadir(20) Sakit/Izin(0) Alpha(0)</td>
+                                    <td>20/06/2023</td>
+                                </tr>
+                                <p>Total Absensi: 20</p>
+                                <p><b>01/06/2023 - 20/06/2023<b></p>
+                              </tbody>
+                            </table>
+                          </div>
+
+                          <!-- GRAFIK ABSENSI-->
+                          <div class="chart-container"data-aos="fade-up">
+                            <canvas id="attendanceChart"></canvas>
+                          </div>
+                        
+                          <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+                          <script src="script.js"></script>
+
+                       
+
+                          <style>
+                            .chart-container {
+  width: 100%;
+  /* max-width: 700px; */
+  margin: 0 auto;
+}
+
+@media screen and (max-width: 480px) {
+  .chart-container {
+    width: 100%;
+  }
+}
+                          </style>
+                          <script>
+                            // Data total kehadiran (contoh data)
+var attendanceData = {
+  labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'], // Label bulan
+  datasets: [{
+    label: 'Total Kehadiran',
+    data: [20, 18, 22, 19, 21, 23], // Data total kehadiran per bulan
+    backgroundColor: 'rgba(54, 162, 235, 0.5)',
+    borderColor: 'rgba(54, 162, 235, 1)',
+    borderWidth: 1
+  }]
+};
+
+// Membuat grafik dengan Chart.js
+var ctx = document.getElementById('attendanceChart').getContext('2d');
+var attendanceChart = new Chart(ctx, {
+  type: 'bar',
+  data: attendanceData,
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    scales: {
+      y: {
+        beginAtZero: true,
+        stepSize: 5
+      }
+    },
+    plugins: {
+      legend: {
+        display: false
+      }
+    }
+  }
+});
+                          </script>
+                     
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+           
+            
+          </div>
+    
+
+    
+
+
+    <script src="../assets/vendors/js/vendor.bundle.base.js"></script>
+    <!-- endinject -->
+    <!-- Plugin js for this page -->
+    <script src="../assets/vendors/select2/select2.min.js"></script>
+    <script src="../assets/vendors/typeahead.js/typeahead.bundle.min.js"></script>
+    <!-- End plugin js for this page -->
+    <!-- inject:js -->
+    <script src="../assets/vendors/chart.js/Chart.min.js"></script>
+    <script src="../assets/vendors/moment/moment.min.js"></script>
+    <script src="../assets/vendors/daterangepicker/daterangepicker.js"></script>
+    <script src="../assets/vendors/chartist/chartist.min.js"></script>
+
+    <script src="../assets/js/off-canvas.js"></script>
+    <script src="../assets/js/bootstrap.min.js"></script>
+    <!-- endinject -->
+    <!-- Custom js for this page -->
+    <script src="../assets/js/typeahead.js"></script>
+    <script src="../assets/js/select2.js"></script>
+     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <!-- <script src="../assets/js/dashboard.js"></script> -->
+    <!-- End custom js for this page -->
+                    <!-- SCRIPT AOS LIBRARY -->
+                    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+                    <script>
+                      AOS.init();
+                    </script>
+  </body>
+ 
+</html>
